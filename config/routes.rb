@@ -14,4 +14,7 @@ Rails.application.routes.draw do
   patch 'bookslists/:id' => 'bookslists#update', as: 'update_bookslist'
 
   delete 'bookslists/:id' => 'bookslists#destroy', as: 'destroy_bookslist'
+
+  root :to => 'bookslists#index'
+
 end

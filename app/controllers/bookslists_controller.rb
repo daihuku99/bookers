@@ -5,12 +5,15 @@ class BookslistsController < ApplicationController
 
   def create
   	  list = List.new(list_params)
-  	  list.save
-  	  redirect_to bookslist_path(list.id)
+      if list.save
+        flash[:notice] = 'Book was successfully created.'
+  	    redirect_to bookslist_path(list.id)
+      end
   end
 
   def index
   	  @lists = List.all
+      @list = List.new
   end
 
   def show
@@ -24,7 +27,7 @@ class BookslistsController < ApplicationController
   def update
   	  list = List.find(params[:id])
   	  list.update(list_params)
-  	  redirect_to bookslist_path(list.id)
+  	  redirect_to bookslist_path(list.id), notice: 'Book was successfully updated.'
   end
 
   def destroy
