@@ -1,17 +1,19 @@
-<% if flash[:notice] %>
-	<div class="flash">
-		<%= flash[:notice] %>
-	</div>
-<% end %>
+<main>
+	<% if flash[:notice] %>
+		<div class="flash">
+			<%= flash[:notice] %>
+		</div>
+	<% end %>
 
-<h1>Editing Book</h1>
-<%= form_for(@list,url:"/bookslists/#{@list.id}") do |f| %>
-	<h4>Title</h4>
-	<%= f.text_field :title %>
-	<h4>Body</h4>
-	<%= f.text_area :body %>
-	<%= f.submit 'Update Book' %>
-<% end %>
+	<h1>Editing Book</h1>
+	<%= form_for(@book,url:"/bookslists/#{@book.id}") do |f| %>
+		<h4>Title</h4>
+		<%= f.text_field :title %>
+		<h4>Body</h4>
+		<%= f.text_area :body %>
+		<%= f.submit 'Update Book' %>
+	<% end %>
 
-<%= link_to "Show", bookslist_path(@list.id) %>
-<%= link_to "Back", bookslists_path(@list.id) %>
+	<%= link_to "Show", books_path(@book.id), {class: "edit-link"} %>
+	<%= link_to "Back", books_path(@book.id), {class: "edit-link"} %>
+</main>
